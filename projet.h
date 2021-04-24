@@ -39,7 +39,7 @@ class client : public personne
     bool bus;
     string destination;
     public:
-    vodi saisirclient();
+    void saisirclient();
     void reserver();
     void reserver_bus();
 };
@@ -91,9 +91,9 @@ istream& operator>>(istream& inc,Date& d )
 {
     cout<<"le jour est"<<endl;
     inc>>d.jour;
-    cout<<"le mois est"<<endl
+    cout<<"le mois est"<<endl;
     inc>>d.mois;
-    cout<<"l'annee est"<<endl
+    cout<<"l'annee est"<<endl;
     inc>>d.annee;
     return inc;
 };
@@ -101,14 +101,15 @@ string verificationpermis()
 {
     string s;
     cin>>s;
-    if(s.size() != 9) && (s[2]!='/')
+    if((s.size() != 9) && (s[2]!='/'))
     {
         cout<<"svp donnez un numero permis valid"<<endl;
-        cins>>s;
+        cin>>s;
     }
     else
     {
         return s;
     }
+    return 0;
 }
 

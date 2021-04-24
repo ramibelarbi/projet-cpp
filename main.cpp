@@ -5,7 +5,9 @@ using namespace std;
 int main()
 {
     personne p;
-    p.saisirpersonne();
-    p.choix();
+    chauffeur c;
+    c.saisirchauffeur();
+   /* p.saisirpersonne();
+    p.choix();*/
     return 0;
 }

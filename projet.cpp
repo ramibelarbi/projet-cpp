@@ -175,7 +175,7 @@ void chauffeur::saisirchauffeur()
     personne p;
     p.saisirpersonne();
     cout<<"donner le numero du permis pour ce chauffeur"<<endl;
-    cin>>this->num_permis;
+    num_permis=verificationpermis();
     cout<<"quelle est l'agence qu'il travail avec?"<<endl;
     cin>>this->Agence;
 }
