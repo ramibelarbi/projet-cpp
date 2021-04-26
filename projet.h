@@ -39,9 +39,12 @@ class client : public personne
     bool bus;
     string destination;
     public:
+    client();
+    client(personne,bool,string);
     void saisirclient();
     void reserver();
     void reserver_bus();
+    ~client();
 };
 class chauffeur : public personne
 {
@@ -49,7 +52,10 @@ class chauffeur : public personne
     string num_permis;
     string Agence;
     public:
+    chauffeur();
+    chauffeur(personne,string,string)
     void saisirchauffeur();
+    ~chauffeur();
 };
 class guide : public personne
 {
@@ -58,7 +64,10 @@ class guide : public personne
     string agence;
     string destination;
     public:
+    guide();
+    guide(personne,string,string,string);
     void saisirguide();
+    ~guide();
 };
 class responsable : public personne
 {
@@ -66,9 +75,12 @@ class responsable : public personne
     string agence;
     string reponsabilite;
     public:
+    responsable();
+    responsable(personne,string,string);
     void saisirreponsable();
     void ajouter_client();
     void supprimer_client();
+    ~responsable();
 };
 
 

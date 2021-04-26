@@ -190,3 +190,4 @@ void guide::saisirguide()
     cout<<"quelle est la destination"<<endl;
     cin>>this->destination;
 }
+void 
