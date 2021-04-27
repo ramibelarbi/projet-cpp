@@ -146,6 +146,16 @@ personne:: ~personne()
 {
         cout<<"destructeur de personne";
 }
+client::client()
+{
+    this->bus=' ';
+    this->destination=' ';
+}
+client::client(personne p,bool b,string d): personne(p)
+{
+    this->destination=d;
+    this->bus=b;
+}
 void client::saisirclient()
 {
     personne p;
@@ -170,6 +180,20 @@ void client::reserver_bus()
 {
 
 }*/
+client::~client()
+{
+    cout<<"destructeur client";
+}
+chauffeur::chauffeur()
+{
+    this->num_permis=' ';
+    this->Agence=' ';
+}
+chauffeur::chauffeur(personne p,string n,string a): personne(p)
+{
+    this->num_permis=n;
+    this->Agence=a;
+}
 void chauffeur::saisirchauffeur()
 {
     personne p;
@@ -178,6 +202,22 @@ void chauffeur::saisirchauffeur()
     num_permis=verificationpermis();
     cout<<"quelle est l'agence qu'il travail avec?"<<endl;
     cin>>this->Agence;
+}
+chauffeur::~chauffeur()
+{
+    cout<<"destructeur chauffeur";
+}
+guide::guide()
+{
+    this->agence=' ';
+    this->destination=' ';
+    this->specialite=' ';
+}
+guide::guide(personne p,string a,string d,string s):personne(p)
+{
+    this->agence=a;
+    this->destination=d;
+    this->specialite=s;
 }
 void guide::saisirguide()
 {
@@ -190,4 +230,7 @@ void guide::saisirguide()
     cout<<"quelle est la destination"<<endl;
     cin>>this->destination;
 }
-void 
+guide::~guide()
+{
+    cout<<"destructeur guide";
+}

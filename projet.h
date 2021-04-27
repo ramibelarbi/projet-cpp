@@ -53,7 +53,7 @@ class chauffeur : public personne
     string Agence;
     public:
     chauffeur();
-    chauffeur(personne,string,string)
+    chauffeur(personne,string,string);
     void saisirchauffeur();
     ~chauffeur();
 };
