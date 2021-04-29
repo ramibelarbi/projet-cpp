@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string.h>
+#include<fstream>
 #include"projet.h"
-using namespace std;Date::Date()
+using namespace std;
+Date::Date()
 {
     jour=00;
     mois=00;
@@ -184,6 +186,7 @@ client::~client()
 {
     cout<<"destructeur client";
 }
+
 chauffeur::chauffeur()
 {
     this->num_permis=' ';
@@ -233,4 +236,23 @@ void guide::saisirguide()
 guide::~guide()
 {
     cout<<"destructeur guide";
+}
+responsable::responsable()
+{
+    this->reponsabilite=' ';
+    this->agence=' ';
+}
+responsable::responsable(personne p,string a,string r):personne(p)
+{
+    this->agence=a;
+    this->reponsabilite=r;
+}
+void responsable::ajouter_client(fstream& f)
+{
+    client c;
+    f.open("c:\\projet.txt",ios::in|ios::out|ios::app);
+    if(! f.is_open()) exit(-1);
+    cout<<"saisir le client"<<endl;
+    cin>>c;
+    f<<c<<endl;
 }

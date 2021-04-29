@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include<fstream>
 using namespace std;
 class Date
 {
@@ -17,6 +18,7 @@ public:
     void setannee(int);
     bool cntr_date(int,int,int);
     friend istream& operator>>(istream&,Date&);
+    friend ostream& operator<<(ostream&,Date&);
 
 };
 class personne
@@ -29,6 +31,10 @@ class personne
     public :
     personne();
     personne(string,string,string,Date);
+    string getnom(){return nom;}
+    string getpernom(){return prenom;}
+    string getcin(){return CIN;}
+    Date getdate_de_naissance(){return date_de_naissance;}
     virtual void saisirpersonne();
     virtual void choix();
     virtual ~personne();
@@ -41,10 +47,14 @@ class client : public personne
     public:
     client();
     client(personne,bool,string);
+    bool get_bus(){return bus;}
+    string getdestination(){return destination;}
     void saisirclient();
     void reserver();
     void reserver_bus();
     ~client();
+    friend istream& operator>>(istream&,client&);
+    friend ostream& operator<<(ostream&,client&);
 };
 class chauffeur : public personne
 {
@@ -78,7 +88,7 @@ class responsable : public personne
     responsable();
     responsable(personne,string,string);
     void saisirreponsable();
-    void ajouter_client();
+    void ajouter_client(fstream&);
     void supprimer_client();
     ~responsable();
 };
@@ -109,6 +119,33 @@ istream& operator>>(istream& inc,Date& d )
     inc>>d.annee;
     return inc;
 };
+ostream& operator<<(ostream& out,Date& d)
+{
+    out<<d.jour<<"/"<<d.mois<<"/"<<d.annee;
+    return out;
+};
+istream& operator>>(istream& inc,client& c)
+{
+    cout<<"les coordonees du client"<<endl;
+    c.saisirpersonne();
+    cout<<"donner la destination"<<endl;
+    inc>>c.destination;
+    cout<<"est ce qu'il va aller avec une bus?"<<endl;
+    inc>>c.bus;
+    return inc;
+}
+ostream& operator<<(ostream& out,client c)
+{
+    cout<<"les cordonnees du client sont :"<<endl;
+    out<<c.getnom();
+    out<<c.getpernom();
+    out<<c.getcin();
+    out<<c.getdate_de_naissance();
+    out<<c.get_bus();
+    out<<c.getdestination()<<endl;
+    return out;
+}
+
 string verificationpermis()
 {
     string s;
