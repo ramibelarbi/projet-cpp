@@ -134,13 +134,13 @@ istream& operator>>(istream& inc,client& c)
     inc>>c.bus;
     return inc;
 }
-ostream& operator<<(ostream& out,client c)
+ostream& operator<<(ostream& out,client& c)
 {
     cout<<"les cordonnees du client sont :"<<endl;
     out<<c.getnom();
     out<<c.getpernom();
     out<<c.getcin();
-    out<<c.getdate_de_naissance();
+    out<<c.getdate_de_naissance().getjour()<<"/"<<c.getdate_de_naissance().getmois()<<"/"<<c.getdate_de_naissance().getannee();
     out<<c.get_bus();
     out<<c.getdestination()<<endl;
     return out;

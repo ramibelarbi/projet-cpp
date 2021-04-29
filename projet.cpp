@@ -256,3 +256,7 @@ void responsable::ajouter_client(fstream& f)
     cin>>c;
     f<<c<<endl;
 }
+responsable::~responsable()
+{
+    cout<<"destruteur de reponsable";
+}
