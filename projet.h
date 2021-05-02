@@ -64,8 +64,12 @@ class chauffeur : public personne
     public:
     chauffeur();
     chauffeur(personne,string,string);
+    string getnumpermis(){return num_permis;}
+    string getagence(){return Agence;}
     void saisirchauffeur();
     ~chauffeur();
+    friend istream& operator>>(istream&,chauffeur&);
+    friend ostream& operator<<(ostream&,chauffeur&);
 };
 class guide : public personne
 {
@@ -76,8 +80,13 @@ class guide : public personne
     public:
     guide();
     guide(personne,string,string,string);
+    string getspecialite(){return specialite;}
+    string getagence(){return agence;}
+    string getdestination(){return destination;}
     void saisirguide();
     ~guide();
+    friend istream& operator>>(istream&,guide&);
+    friend ostream& operator<<(ostream&,guide&);
 };
 class responsable : public personne
 {
@@ -89,6 +98,11 @@ class responsable : public personne
     responsable(personne,string,string);
     void saisirreponsable();
     void ajouter_client(fstream&);
+    void ajouter_chauffeur(fstream&);
+    void ajouter_guide(fstream&);
+    void afficher_les_clients(fstream&);
+    void afficher_les_chauffeurs(fstream&);
+    void afficher_les_guides(fstream&);
     void supprimer_client();
     ~responsable();
 };
@@ -137,15 +151,59 @@ istream& operator>>(istream& inc,client& c)
 ostream& operator<<(ostream& out,client& c)
 {
     cout<<"les cordonnees du client sont :"<<endl;
-    out<<c.getnom();
-    out<<c.getpernom();
-    out<<c.getcin();
-    out<<c.getdate_de_naissance().getjour()<<"/"<<c.getdate_de_naissance().getmois()<<"/"<<c.getdate_de_naissance().getannee();
-    out<<c.get_bus();
+    out<<c.getnom()<<" ";
+    out<<c.getpernom()<<" ";
+    out<<c.getcin()<<" ";
+    out<<c.getdate_de_naissance().getjour()<<"/"<<c.getdate_de_naissance().getmois()<<"/"<<c.getdate_de_naissance().getannee()<<" ";
+    out<<c.get_bus()<<" ";
     out<<c.getdestination()<<endl;
     return out;
 }
-
+istream& operator>>(istream& inc,chauffeur& c)
+{
+    cout<<"les coordonees du chauffeur"<<endl;
+    c.saisirpersonne();
+    cout<<"donner le num permis"<<endl;
+    inc>>c.num_permis;
+    cout<<"quelle est l'agence"<<endl;
+    inc>>c.Agence;
+    return inc;
+}
+ostream& operator<<(ostream& out,chauffeur& c)
+{
+    cout<<"les cordonnees du chauffeur sont :"<<endl;
+    out<<c.getnom()<<" ";
+    out<<c.getpernom()<<" ";
+    out<<c.getcin()<<" ";
+    out<<c.getdate_de_naissance().getjour()<<"/"<<c.getdate_de_naissance().getmois()<<"/"<<c.getdate_de_naissance().getannee()<<" ";
+    out<<c.getnumpermis()<<" ";
+    out<<c.getagence()<<endl;
+    return out;
+}
+istream& operator>>(istream& inc,guide& g)
+{
+    cout<<"les coordonees du guide"<<endl;
+    g.saisirpersonne();
+    cout<<"donner la specialite"<<endl;
+    inc>>g.specialite;
+    cout<<"donner l'agence"<<endl;
+    inc>>g.agence;
+    cout<<"donner la destination"<<endl;
+    inc>>g.destination;
+    return inc;
+}
+ostream& operator<<(ostream& out,guide& c)
+{
+    cout<<"les cordonnees du guide sont :"<<endl;
+    out<<c.getnom()<<" ";
+    out<<c.getpernom()<<" ";
+    out<<c.getcin()<<" ";
+    out<<c.getdate_de_naissance().getjour()<<"/"<<c.getdate_de_naissance().getmois()<<"/"<<c.getdate_de_naissance().getannee()<<" ";
+    out<<c.getspecialite()<<" ";
+    out<<c.getagence()<<" ";
+    out<<c.getdestination()<<endl;
+    return out;
+}
 string verificationpermis()
 {
     string s;

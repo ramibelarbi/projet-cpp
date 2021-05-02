@@ -146,7 +146,7 @@ void personne::choix()
 }
 personne:: ~personne()
 {
-        cout<<"destructeur de personne";
+        
 }
 client::client()
 {
@@ -184,7 +184,7 @@ void client::reserver_bus()
 }*/
 client::~client()
 {
-    cout<<"destructeur client";
+
 }
 
 chauffeur::chauffeur()
@@ -208,7 +208,7 @@ void chauffeur::saisirchauffeur()
 }
 chauffeur::~chauffeur()
 {
-    cout<<"destructeur chauffeur";
+
 }
 guide::guide()
 {
@@ -235,7 +235,7 @@ void guide::saisirguide()
 }
 guide::~guide()
 {
-    cout<<"destructeur guide";
+    
 }
 responsable::responsable()
 {
@@ -250,13 +250,85 @@ responsable::responsable(personne p,string a,string r):personne(p)
 void responsable::ajouter_client(fstream& f)
 {
     client c;
-    f.open("c:\\projet.txt",ios::in|ios::out|ios::app);
+    f.open("c:\\client.txt",ios::in|ios::out|ios::app);
     if(! f.is_open()) exit(-1);
     cout<<"saisir le client"<<endl;
     cin>>c;
     f<<c<<endl;
+    f.close();
+}
+void responsable::ajouter_chauffeur(fstream& f)
+{
+    chauffeur c;
+    f.open("c:\\chauffeur.txt",ios::in|ios::out|ios::app);
+    if(! f.is_open()) exit(-1);
+    cout<<"saisir le chauffeur"<<endl;
+    cin>>c;
+    f<<c<<endl;
+    f.close();
+}
+void responsable::ajouter_guide(fstream& f)
+{
+    guide g;
+    f.open("c:\\guide.txt",ios::in|ios::out|ios::app);
+    if(! f.is_open()) exit(-1);
+    cout<<"saisir le guide"<<endl;
+    cin>>g;
+    f<<g<<endl;
+    f.close();
+}
+void responsable::afficher_les_clients(fstream& f)
+{
+    client c;
+    f.open("c:\\client.txt",ios::in|ios::out|ios::app);
+    if(! f.is_open()) exit(-1);
+    f.seekg(0);
+    while (1)
+    {
+        f>>c;
+        if(f.eof())
+        {
+            break;
+        }
+    cout<<c<<endl;
+    }
+    f.close();
+}
+void responsable::afficher_les_chauffeurs(fstream& f)
+{
+    chauffeur c;
+    f.open("c:\\chauffeur.txt",ios::in|ios::out|ios::trunc);
+    if(! f.is_open()) exit(-1);
+    f.seekg(0);
+    while (1)
+    {
+        f>>c;
+        if(f.eof())
+        {
+            break;
+        }
+    cout<<c<<endl;
+    }
+    f.close();
+}
+void responsable::afficher_les_guides(fstream& f)
+{
+    guide g;
+    f.open("c:\\guide.txt",ios::in|ios::out|ios::trunc);
+    if(! f.is_open()) exit(-1);
+    f.seekg(0);
+    while (1)
+    {
+        f>>g;
+        if(f.eof())
+        {
+            break;
+        }
+    cout<<g<<endl;
+    }
+    f.close();
 }
 responsable::~responsable()
 {
-    cout<<"destruteur de reponsable";
+    
 }

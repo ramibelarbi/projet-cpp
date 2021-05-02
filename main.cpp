@@ -9,7 +9,10 @@ int main()
     fstream f;
     chauffeur c;
     responsable r;
-    r.ajouter_client(f);
+    /*r.ajouter_client(f);*/
+    r.afficher_les_clients(f);
+    /*r.ajouter_chauffeur(f);*/
+   /* r.afficher_les_chauffeurs(f);*/
     /*c.saisirchauffeur();*/
    /* p.saisirpersonne();
     p.choix();*/
