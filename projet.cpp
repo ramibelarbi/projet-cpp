@@ -250,7 +250,7 @@ responsable::responsable(personne p,string a,string r):personne(p)
 void responsable::ajouter_client(fstream& f)
 {
     client c;
-    f.open("c:\\client.txt",ios::in|ios::out|ios::app);
+    f.open("client.txt",ios::in|ios::out|ios::app);
     if(! f.is_open()) exit(-1);
     cout<<"saisir le client"<<endl;
     cin>>c;
@@ -260,7 +260,7 @@ void responsable::ajouter_client(fstream& f)
 void responsable::ajouter_chauffeur(fstream& f)
 {
     chauffeur c;
-    f.open("c:\\chauffeur.txt",ios::in|ios::out|ios::app);
+    f.open("chauffeur.txt",ios::in|ios::out|ios::app);
     if(! f.is_open()) exit(-1);
     cout<<"saisir le chauffeur"<<endl;
     cin>>c;
@@ -270,7 +270,7 @@ void responsable::ajouter_chauffeur(fstream& f)
 void responsable::ajouter_guide(fstream& f)
 {
     guide g;
-    f.open("c:\\guide.txt",ios::in|ios::out|ios::app);
+    f.open("guide.txt",ios::in|ios::out|ios::app);
     if(! f.is_open()) exit(-1);
     cout<<"saisir le guide"<<endl;
     cin>>g;
@@ -280,7 +280,7 @@ void responsable::ajouter_guide(fstream& f)
 void responsable::afficher_les_clients(fstream& f)
 {
     client c;
-    f.open("c:\\client.txt",ios::in|ios::out|ios::app);
+    f.open("client.txt",ios::in);
     if(! f.is_open()) exit(-1);
     f.seekg(0);
     while (1)
@@ -290,14 +290,14 @@ void responsable::afficher_les_clients(fstream& f)
         {
             break;
         }
-    cout<<c<<endl;
+        cout<<c<<endl;
     }
     f.close();
 }
 void responsable::afficher_les_chauffeurs(fstream& f)
 {
     chauffeur c;
-    f.open("c:\\chauffeur.txt",ios::in|ios::out|ios::trunc);
+    f.open("chauffeur.txt",ios::in);
     if(! f.is_open()) exit(-1);
     f.seekg(0);
     while (1)
@@ -314,7 +314,7 @@ void responsable::afficher_les_chauffeurs(fstream& f)
 void responsable::afficher_les_guides(fstream& f)
 {
     guide g;
-    f.open("c:\\guide.txt",ios::in|ios::out|ios::trunc);
+    f.open("guide.txt",ios::in);
     if(! f.is_open()) exit(-1);
     f.seekg(0);
     while (1)
